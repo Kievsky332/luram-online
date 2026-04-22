@@ -1,3 +1,10 @@
+<?php if (!isset($_COOKIE['username']) || empty($_COOKIE['username'])): ?>
+<?php
+$username = $_POST['username']??'';
+setcookie('username',$username,time() +60*60*24*31 , "/");
+?>
+<script>location.href = "/";</script>
+<?php else:?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,24 +14,24 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <center>
-<?php if (!isset($_COOKIE['username']) || empty($_COOKIE['username'])): ?>
-<?php
-$username = $_POST['username'];
-setcookie('username',$username,time() +60*60*24*31 , "/"); 
-header("Location: ../luram/chat.php");?>
-<?php else:?>
-    <?php  ?>
+    <center>        
         <div id="chat">
-            <form action="../luram/send_message.php" method="post">
+            <form action="send_message.php" method="post" enctype="multipart/form-data">
                 <input id="text"  class="inpt" name="message" placeholder="Ваше сообщение">
-                <input type="submit" onclick="add_message()" class="sbm" value=">">
+                <input type="file" id="file" name="file" accept="image/*">
+                <input type="submit"  class="sbm" value=">">
             </form>
             
-            <output id="message"><?php $message = require '../luram/messages.php';?></output>
+            <output ><iframe src='messages.php' id="message"></iframe></output><script>
+  const iframe = document.getElementById('message');
+  iframe.onload = function() {
+    // Прокрутка к нижней части
+    iframe.contentWindow.scrollTo(0, iframe.contentWindow.document.body.scrollHeight);
+  };
+</script>
         </div>
-    </center>
+</center>
 </body>
 </html>
-    
-<?php endif;?>
+  
+<?php endif;?>    

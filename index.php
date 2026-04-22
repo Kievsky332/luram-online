@@ -13,14 +13,14 @@
         <div id="centered">
             <p id="invis">Пожалуйста введите имя!</p>
             <h1>Как тебя зовут ?</h1>
-            <form action="../luram/chat.php" method="post" >
+            <form action="chat.php" method="post" >
                 <input type="text" id="inpt" class="inpt" value="Аноним" name="username" placeholder="Аноним"><br><br>
-                <button type="submit" id="sbm" class="sbm" onclick="chat()">Зайти</button>
+                <button type="submit" id="sbm" class="sbm" >Зайти</button>
             </form>
         </div>
          <?php else:?>
             <script>
-                window.location.href = '../luram/chat.php';
+                window.location.href = 'chat.php';
             </script>
         <?php endif;?>
     </center>
