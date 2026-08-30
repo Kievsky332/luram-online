@@ -1,5 +1,5 @@
 <?php 
-$msql = new  mysqli("localhost","root","","bd");
+$msql = new  mysqli("localhost","","","bd");
 $sql = "SELECT * FROM `message`";
 $result = $msql->query($sql);
 echo '<meta http-equiv="refresh" content="10">';
@@ -9,7 +9,8 @@ if ($result->num_rows > 0) {
         {
             $message =  $row["message"]; 
             $user =  $row["name"]; 
-            $messages = "<p id='center'>$user :<br> $message </p>";
+      		$image =  $row["image"]; 
+            $messages = "<p id='center'>$user :<br>$image $message </p>";
             echo $messages;
         };
     $msql->close();

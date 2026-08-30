@@ -3,7 +3,7 @@
 $username = $_POST['username']??'';
 setcookie('username',$username,time() +60*60*24*31 , "/");
 ?>
-<script>location.href = "/";</script>
+<script>location.href = "https://luram.sorav.ru/";</script>
 <?php else:?>
 <!DOCTYPE html>
 <html lang="en">
@@ -21,6 +21,9 @@ setcookie('username',$username,time() +60*60*24*31 , "/");
                 <input type="file" id="file" name="file" accept="image/*">
                 <input type="submit"  class="sbm" value=">">
             </form>
+           <p>Для удаления информации обратитесь admin@sorav.ru</p>
+
+          
             
             <output ><iframe src='messages.php' id="message"></iframe></output><script>
   const iframe = document.getElementById('message');
